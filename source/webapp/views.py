@@ -5,7 +5,7 @@ from webapp.models import GuestBook
 
 
 def index(request):
-    guest_book = GuestBook.objects.order_by("-creation_time")
+    guest_book = GuestBook.objects.filter(status='active').order_by("-creation_time")
     return render(request, 'index.html', context={'guest_book': guest_book})
 
 
@@ -23,6 +23,26 @@ def create_guestbook(request):
             request,
             'create_guestbook.html',
             {"form": form}
-
         )
 
+
+def update_guestbook(request, pk):
+    guestbook = get_object_or_404(GuestBook, pk=pk)
+    if request.method == "GET":
+        form = GuestBookForm(instance=guestbook)
+        return render(
+            request,
+            'guestbook_update.html',
+            context={'form': form}
+        )
+    else:
+        form = GuestBookForm(request.POST, instance=guestbook)
+        if form.is_valid():
+            form.save()
+            return redirect('main')
+
+        return render(
+            request,
+            'guestbook_update.html',
+            context={'form': form}
+        )
