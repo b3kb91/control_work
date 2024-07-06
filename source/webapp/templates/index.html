@@ -9,12 +9,15 @@
 {% block content %}
     <br><h1>Добавить новую запись</h1>
     {% for guest in guest_book %}
-        <div class="card w-50 mt-5">
+        <div class="card w-50 mt-3">
             <div class="card-body">
                 <h5 class="card-title "><strong>{{ guest.name }} - ({{ guest.email }})</strong></h5>
                 <p class="card-text"><strong>{{ guest.text }}</strong></p>
                 <a href="{% url 'update' guest.pk %}">
-                   <i class="fa-sharp fa-regular fa-pen-to-square"></i>
+                   <i class="fa-2x fa-sharp fa-regular fa-pen-to-square"></i>
+                </a>
+                <a href="{% url 'delete' guest.pk %}">
+                   <i class="fa-2x fa-solid fa-trash"></i> 
                 </a>
             </div>
         </div>

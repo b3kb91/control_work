@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
 
 from webapp.forms import GuestBookForm
 from webapp.models import GuestBook
@@ -46,3 +47,16 @@ def update_guestbook(request, pk):
             'guestbook_update.html',
             context={'form': form}
         )
+
+
+def delete_guestbook(request, *args, pk, **kwargs):
+    guestbook = get_object_or_404(GuestBook, pk=pk)
+    if request.method == "POST":
+        email_del = request.POST.get('email')
+        if email_del == guestbook.email:
+            guestbook.delete()
+            return redirect('main')
+        else:
+            messages.error(request, "Неправильно введено, попробуйте еще раз")
+    return render(request, "delete_guestbook.html", context={"guestbook": guestbook})
+
