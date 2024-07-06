@@ -1,0 +1,74 @@
+[
+{
+    "model": "webapp.guestbook",
+    "pk": 1,
+    "fields": {
+        "name": "Бекбол",
+        "email": "19kani92@gmail.com",
+        "text": "не знаю что написать",
+        "creation_time": "2024-07-06T06:27:11.299Z",
+        "update_time": "2024-07-06T06:27:11.299Z",
+        "status": "blocked"
+    }
+},
+{
+    "model": "webapp.guestbook",
+    "pk": 8,
+    "fields": {
+        "name": "Каныкей",
+        "email": "19kani92@mail.ru",
+        "text": "hello",
+        "creation_time": "2024-07-06T09:12:05.423Z",
+        "update_time": "2024-07-06T09:12:05.423Z",
+        "status": "blocked"
+    }
+},
+{
+    "model": "webapp.guestbook",
+    "pk": 9,
+    "fields": {
+        "name": "Арслан Болотбекова",
+        "email": "bolotbekovabarchyn1@gmail.com",
+        "text": "i'm richest",
+        "creation_time": "2024-07-06T09:17:27.732Z",
+        "update_time": "2024-07-06T09:24:02.838Z",
+        "status": "active"
+    }
+},
+{
+    "model": "webapp.guestbook",
+    "pk": 10,
+    "fields": {
+        "name": "Александр Резза",
+        "email": "rezza1991@mail.ru",
+        "text": "Чемпион по боксу",
+        "creation_time": "2024-07-06T09:18:02.190Z",
+        "update_time": "2024-07-06T09:18:02.190Z",
+        "status": "active"
+    }
+},
+{
+    "model": "webapp.guestbook",
+    "pk": 11,
+    "fields": {
+        "name": "Вася Пупкин",
+        "email": "vasyapupkin@gmail.com",
+        "text": "вася пупкин - лидер",
+        "creation_time": "2024-07-06T09:18:35.265Z",
+        "update_time": "2024-07-06T09:18:35.265Z",
+        "status": "active"
+    }
+},
+{
+    "model": "webapp.guestbook",
+    "pk": 12,
+    "fields": {
+        "name": "John Doe",
+        "email": "example@gmail.com",
+        "text": "hello my friends",
+        "creation_time": "2024-07-06T09:20:03.134Z",
+        "update_time": "2024-07-06T09:23:30.160Z",
+        "status": "active"
+    }
+}
+]
