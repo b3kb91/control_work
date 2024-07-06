@@ -33,4 +33,4 @@ class GuestBookForm(forms.ModelForm):
 
 
 class SearchGuestBook(forms.Form):
-    pass
+    name = forms.CharField(label='Имя автора', max_length=200, required=False)

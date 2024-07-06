@@ -7,6 +7,11 @@
 <a href="create/">Создать гостевую книгу</a><br><br>
 <br>
 {% block content %}
+    <form method="GET" action="">
+        {% csrf_token %}
+        <br>{{ form.as_p }}
+        <button type="submit">Найти</button>
+    </form>
     <br><h1>Гостевая книга</h1>
     {% for guest in guest_book %}
         <div class="card w-50 mt-3">
