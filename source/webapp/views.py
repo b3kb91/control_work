@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 
+from webapp.forms import GuestBookForm
 from webapp.models import GuestBook
 
 
@@ -9,4 +10,19 @@ def index(request):
 
 
 def create_guestbook(request):
-    pass
+    if request.method == "GET":
+        form = GuestBookForm()
+        return render(request, 'create_guestbook.html', context={'form': form})
+    else:
+        form = GuestBookForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('main')
+
+        return render(
+            request,
+            'create_guestbook.html',
+            {"form": form}
+
+        )
+

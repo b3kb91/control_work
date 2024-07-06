@@ -15,7 +15,7 @@ class GuestBookForm(forms.ModelForm):
 
     class Meta:
         model = GuestBook
-        fields = ['name', 'email', 'text', 'creation_time', 'update_time', 'status']
+        fields = ['name', 'email', 'text']
         error_messages = {
             'name': {
                 'required': 'Обязательное поле'
@@ -24,9 +24,6 @@ class GuestBookForm(forms.ModelForm):
                 'required': 'Обязательное поле'
             },
             'text': {
-                'required': 'Обязательное поле'
-            },
-            'status': {
                 'required': 'Обязательное поле'
             }
         }

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+
+{% block links %}
+{% endblock %}
+
+
+{% block content %}
+<br><h1>Добавить новую запись</h1>
+<form action="" method="post">
+    {% include 'partial/guestbook_form.html' with button_text='Добавить' %}
+</form>
+{% endblock %}
