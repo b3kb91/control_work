@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 
-from webapp.forms import GuestBookForm
+from webapp.forms import GuestBookForm, SearchGuestBook
 from webapp.models import GuestBook
 
 
@@ -10,7 +10,8 @@ def index(request):
         form = SearchGuestBook(request.GET)
         if form.is_valid():
             author_name = form.cleaned_data['name']
-            guestbook = GuestBook.objects.filter(status='active', name__icontains=author_name).order_by("-creation_time")
+            guestbook = GuestBook.objects.filter(status='active', name__icontains=author_name).order_by(
+                "-creation_time")
         else:
             guestbook = GuestBook.objects.filter(status='active').order_by("-creation_time")
     else:
@@ -68,4 +69,3 @@ def delete_guestbook(request, *args, pk, **kwargs):
         else:
             messages.error(request, "Неправильно введено, попробуйте еще раз")
     return render(request, "delete_guestbook.html", context={"guestbook": guestbook})
-
