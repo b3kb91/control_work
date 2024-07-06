@@ -30,3 +30,7 @@ class GuestBookForm(forms.ModelForm):
         widgets = {
             'text': widgets.Textarea(attrs={'cols': 20, 'rows': 5}),
         }
+
+
+class SearchGuestBook(forms.Form):
+    pass

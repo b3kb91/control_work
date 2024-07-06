@@ -6,8 +6,17 @@ from webapp.models import GuestBook
 
 
 def index(request):
-    guest_book = GuestBook.objects.filter(status='active').order_by("-creation_time")
-    return render(request, 'index.html', context={'guest_book': guest_book})
+    if request.method == 'GET':
+        form = SearchGuestBook(request.GET)
+        if form.is_valid():
+            author_name = form.cleaned_data['name']
+            guestbook = GuestBook.objects.filter(status='active', name__icontains=author_name).order_by("-creation_time")
+        else:
+            guestbook = GuestBook.objects.filter(status='active').order_by("-creation_time")
+    else:
+        form = SearchGuestBook()
+        guestbook = GuestBook.objects.filter(status='active').order_by("-creation_time")
+    return render(request, 'index.html', context={'form': form, 'guest_book': guestbook})
 
 
 def create_guestbook(request):
