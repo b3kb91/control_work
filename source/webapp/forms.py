@@ -30,3 +30,7 @@ class GuestBookForm(forms.ModelForm):
         widgets = {
             'text': widgets.Textarea(attrs={'cols': 20, 'rows': 5}),
         }
+
+
+class SearchGuestBook(forms.Form):
+    name = forms.CharField(label='Имя автора', max_length=200, required=False)
