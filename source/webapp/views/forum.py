@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import redirect
 from django.views.generic import ListView, DetailView, CreateView
 from webapp.models import Topic
 from webapp.forms import ReplyForm, ForumForm
@@ -11,7 +11,7 @@ class TopicListView(ListView):
     template_name = 'forum/topic_list.html'
     ordering = ['-created_at']
     context_object_name = 'topics'
-    paginate_by = 6
+    paginate_by = 1
 
 
 class TopicDetailView(LoginRequiredMixin, DetailView):
@@ -37,11 +37,13 @@ class TopicDetailView(LoginRequiredMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         replies = self.object.replies.all()
-        paginator = Paginator(replies, 5)
+        paginator = Paginator(replies, 2)
         page_number = self.request.GET.get('page')
         page_obj = paginator.get_page(page_number)
         context['reply_form'] = ReplyForm()
         context['page_obj'] = page_obj
+        context['is_paginated'] = page_obj.has_other_pages()
+        context['search_value'] = self.request.GET.get('search', '')
         return context
 
 
