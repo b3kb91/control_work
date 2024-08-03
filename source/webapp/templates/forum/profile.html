@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <h1>Личный кабинет</h1>
+        <div class="profile-info">
+            <p>Имя пользователя: {{ user.username }}</p>
+            <p>Электронная почта: {{ user.email }}</p>
+            <p>Количество комментариев: {{ reply_count }}</p>
+        </div>
+
+        <div class="user-topics">
+            <h2>Мои темы</h2>
+            <ul>
+                {% for topic in topics %}
+                    <li>
+                        <a href="{% url 'webapp:detail' topic.pk %}">{{ topic.title }}</a>
+                        - {{ topic.created_at|date:"Y.m.d" }}
+                    </li>
+                    {% empty %}
+                    <li>Вы еще не создали ни одной темы.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}

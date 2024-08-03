@@ -34,18 +34,6 @@ class TopicDetailView(LoginRequiredMixin, DetailView):
             reply.save()
             return redirect('webapp:main')
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        replies = self.object.replies.all()
-        paginator = Paginator(replies, 2)
-        page_number = self.request.GET.get('page')
-        page_obj = paginator.get_page(page_number)
-        context['reply_form'] = ReplyForm()
-        context['page_obj'] = page_obj
-        context['is_paginated'] = page_obj.has_other_pages()
-        context['search_value'] = self.request.GET.get('search', '')
-        return context
-
 
 class TopicCreateView(LoginRequiredMixin, CreateView):
     model = Topic

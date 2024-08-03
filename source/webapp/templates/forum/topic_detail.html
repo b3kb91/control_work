@@ -4,7 +4,7 @@
 <div class="container mt-4">
     <div class="topic-header mb-4">
         <h1>{{ topic.title }}</h1>
-        <p class="text-muted">{{ topic.created_at|date:"Y.m.d" }} by {{ topic.user.username }}</p>
+        <p class="text-muted">{{ topic.created_at|date:"Y.m.d" }}  {{ topic.user.username }}</p>
     </div>
 
     {% if user.is_authenticated %}
