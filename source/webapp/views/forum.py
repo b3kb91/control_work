@@ -1,8 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.core.paginator import Paginator
 from django.shortcuts import redirect
-from django.views.generic import ListView, DetailView, CreateView
-from webapp.models import Topic
+from django.views.generic import ListView, CreateView
+from webapp.models import Topic, Answer
 from webapp.forms import ReplyForm, ForumForm
 
 
@@ -11,28 +10,37 @@ class TopicListView(ListView):
     template_name = 'forum/topic_list.html'
     ordering = ['-created_at']
     context_object_name = 'topics'
-    paginate_by = 1
+    paginate_by = 2
 
 
-class TopicDetailView(LoginRequiredMixin, DetailView):
-    model = Topic
+class TopicDetailView(ListView):
+    model = Answer
     template_name = 'forum/topic_detail.html'
-    context_object_name = 'topic'
+    context_object_name = 'answers'
+    paginate_by = 2
+
+    def get_queryset(self):
+        topic = self.get_topic()
+        return Answer.objects.filter(topic=topic).order_by('created_at')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['topic'] = self.get_topic()
         context['reply_form'] = ReplyForm()
         return context
 
+    def get_topic(self):
+        return Topic.objects.get(pk=self.kwargs['pk'])
+
     def post(self, request, *args, **kwargs):
-        topic = self.get_object()
+        topic = self.get_topic()
         form = ReplyForm(request.POST)
         if form.is_valid():
             reply = form.save(commit=False)
             reply.topic = topic
             reply.user = request.user
             reply.save()
-            return redirect('webapp:main')
+            return redirect('webapp:detail', pk=topic.pk)
 
 
 class TopicCreateView(LoginRequiredMixin, CreateView):
