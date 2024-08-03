@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1></h1>
+  <ul>
+    {% for topic in topics %}
+      <li>
+        <a href="{% url 'webapp:detail' topic.pk %}">
+          {{ topic.title }} - {{ topic.created_at }} - {{ topic.author.username }} - {{ topic.get_reply_count }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+  {% if user.is_authenticated %}
+    <a href="{% url 'webapp:create' %}">Create a new topic</a>
+  {% endif %}
+{% endblock %}

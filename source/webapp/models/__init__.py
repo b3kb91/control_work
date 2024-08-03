@@ -1,1 +1,1 @@
-
+from .forum import Topic

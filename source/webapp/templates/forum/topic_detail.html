@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>{{ topic.title }}</h1>
+  <p>Created by {{ topic.author.username }} on {{ topic.created_at }}</p>
+  <p>{{ topic.content }}</p>
+  
+  {% if user.is_authenticated %}
+    <form method="post" action="{% url 'webapp:detail' topic.pk %}">
+      {% csrf_token %}
+      {{ reply_form.as_p }}
+      <button type="submit">Reply</button>
+    </form>
+  {% endif %}
+  
+{#  <h2>Replies</h2>#}
+{#  <ul>#}
+{#    {% for reply in topic.replies.all %}#}
+{#      <li>{{ reply.author.username }} - {{ reply.created_at }}: {{ reply.content }}</li>#}
+{#    {% endfor %}#}
+{#  </ul>#}
+{% endblock %}
