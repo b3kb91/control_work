@@ -1,22 +1,50 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>{{ topic.title }}</h1>
-  <p>Created by {{ topic.author.username }} on {{ topic.created_at }}</p>
-  <p>{{ topic.content }}</p>
-  
-  {% if user.is_authenticated %}
-    <form method="post" action="{% url 'webapp:detail' topic.pk %}">
-      {% csrf_token %}
-      {{ reply_form.as_p }}
-      <button type="submit">Reply</button>
-    </form>
-  {% endif %}
-  
-{#  <h2>Replies</h2>#}
-{#  <ul>#}
-{#    {% for reply in topic.replies.all %}#}
-{#      <li>{{ reply.author.username }} - {{ reply.created_at }}: {{ reply.content }}</li>#}
-{#    {% endfor %}#}
-{#  </ul>#}
+    <p>{{ topic.title }} {{ topic.created_at |date:"Y.m.d"  }} {{ topic.user.username }}</p>
+
+    {% if user.is_authenticated %}
+        <form method="post">
+            {% csrf_token %}
+            {{ reply_form.as_p }}
+            <button type="submit">Ответить</button>
+        </form>
+    {% endif %}
+
+    {% for reply in topic.replies.all %}
+        <br>
+        <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="{{ reply.user.avatar.url }}" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{ reply.user.username }}</h5>
+                    <p class="card-text">{{ reply.content }}</p>
+                    <p class="card-text"><small class="text-body-secondary">
+                        {{ reply.created_at |date:"Y.m.d"  }}</small>
+                    </p>
+                    {% if user.is_authenticated and user == reply.user %}
+                        <a href="{% url 'webapp:answer_edit' reply.pk %}">
+                            <i class="fa-2x fa-sharp fa-regular fa-pen-to-square"></i>
+                        </a>
+                        <a href="{% url 'webapp:answer_delete' reply.pk %}"
+                           class="fa-2x fa-solid fa-trash text-danger"></a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
 {% endblock %}
+
+{% block paginator %}
+
+    <div class="paginator mt-4">
+        {% if is_paginated %}
+            {% include "partial/pagination.html" %}
+        {% endif %}
+    </div>
+{% endblock %}
+

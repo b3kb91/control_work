@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.urls import reverse
 
 
 class Topic(models.Model):
@@ -8,6 +9,9 @@ class Topic(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
 
+    def get_absolute_url(self):
+        return reverse("webapp:main")
+
     def __str__(self):
         return self.title
 
@@ -15,3 +19,4 @@ class Topic(models.Model):
         ordering = ['created_at']
         verbose_name = 'Тема'
         verbose_name_plural = 'Темы'
+

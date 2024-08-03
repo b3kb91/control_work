@@ -1,6 +1,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
 from django.forms import widgets
+
 from webapp.models import Topic
 
 
@@ -29,5 +30,5 @@ class ForumForm(forms.ModelForm):
         }
         widgets = {
             'content': widgets.Textarea(attrs={'cols': 23, "rows": 5})
-        }
 
+        }
