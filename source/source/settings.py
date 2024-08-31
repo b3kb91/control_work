@@ -35,8 +35,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'rest_framework',
+    'rest_framework.authtoken',
+
     'webapp',
     'accounts',
+    'api_v1',
 ]
 
 MIDDLEWARE = [
@@ -67,6 +72,16 @@ TEMPLATES = [
     },
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+}
+
 WSGI_APPLICATION = 'source.wsgi.application'
 
 # Database
@@ -75,7 +90,7 @@ WSGI_APPLICATION = 'source.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'control_work_eight',
+        'NAME': 'control_work_9',
         'USER': 'postgres',
         'PASSWORD': 'aiko22392',
         'HOST': 'localhost',
@@ -113,10 +128,10 @@ USE_I18N = True
 
 USE_TZ = True
 
-AUTH_USER_MODEL = 'accounts.UserForum'
-LOGIN_REDIRECT_URL = "webapp:main"
-LOGOUT_REDIRECT_URL = "webapp:main"
-MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
+# AUTH_USER_MODEL = 'accounts.'  # нужно продолжить
+# LOGIN_REDIRECT_URL = "webapp:"  # нужно продолжить
+# LOGOUT_REDIRECT_URL = "webapp:"  # нужно продолжить
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 
 MEDIA_URL = '/uploads/'
 

@@ -1,17 +1,14 @@
 from django.contrib.auth import login, get_user_model
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
-from django.views.generic import CreateView, View
+from django.views.generic import CreateView
 
-from accounts.forms import CustomUserCreationForm
 
 User = get_user_model()
 
 
 class RegistrationView(CreateView):
-    form_class = CustomUserCreationForm
+    form_class = ""
     template_name = 'registration.html'
     model = User
 
