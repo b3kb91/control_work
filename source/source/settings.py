@@ -128,10 +128,9 @@ USE_I18N = True
 
 USE_TZ = True
 
-# AUTH_USER_MODEL = 'accounts.'  # нужно продолжить
-# LOGIN_REDIRECT_URL = "webapp:"  # нужно продолжить
-# LOGOUT_REDIRECT_URL = "webapp:"  # нужно продолжить
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
+LOGIN_REDIRECT_URL = "webapp:"  # нужно продолжить
+LOGOUT_REDIRECT_URL = "webapp:"  # нужно продолжить
+MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 
 MEDIA_URL = '/uploads/'
 
