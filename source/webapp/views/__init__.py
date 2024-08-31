@@ -1,0 +1,1 @@
+from webapp.views.photo import PhotoListView, PhotoCreateView, PhotoDeleteView, PhotoUpdateView, PhotoDetailView
