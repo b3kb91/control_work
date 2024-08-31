@@ -1,7 +1,8 @@
 from django.urls import path
 
 from webapp.views import (PhotoListView, PhotoUpdateView, PhotoDeleteView, PhotoDetailView, PhotoCreateView,
-                          AlbumUpdateView, AlbumListView, AlbumCreateView, AlbumDeleteView, AlbumDetailView)
+                          AlbumUpdateView, AlbumListView, AlbumCreateView, AlbumDeleteView, AlbumDetailView,
+                          AddFavoritePhotoView, AddFavoriteAlbumView, RemoveFavoritePhotoView, RemoveFavoriteAlbumView)
 
 app_name = 'webapp'
 
@@ -17,4 +18,9 @@ urlpatterns = [
     path('album/<int:pk>/update/', AlbumUpdateView.as_view(), name='update_album'),
     path('album/create/', AlbumCreateView.as_view(), name='create_album'),
     path('album/<int:pk>/', AlbumDetailView.as_view(), name='detail_album'),
+
+    path('photo/<int:photo_id>/add_favorite/', AddFavoritePhotoView.as_view(), name='add_favorite_photo'),
+    path('photo/<int:photo_id>/remove_favorite/', RemoveFavoritePhotoView.as_view(), name='remove_favorite_photo'),
+    path('album/<int:album_id>/add_favorite/', AddFavoriteAlbumView.as_view(), name='add_favorite_album'),
+    path('album/<int:album_id>/remove_favorite/', RemoveFavoriteAlbumView.as_view(), name='remove_favorite_album'),
 ]

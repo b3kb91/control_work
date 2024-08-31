@@ -9,11 +9,26 @@
         {% for photo in photos %}
             <li>
                 <a href="{% url 'webapp:detail_photo' photo.pk %}">
-                    <img src="{{ photo.photo.url }}" alt="Photo Image" width="100" />
+                    <img src="{{ photo.photo.url }}" alt="Photo Image" width="100"/>
                     {{ photo.signature }}
                 </a>
+                {% if user.is_authenticated %}
+                    {% if user.is_authenticated %}
+                        {% if user.is_authenticated %}
+                            {% if album in user.favorite_albums.all %}
+                                <button class="favorite-button" data-url="{% url 'webapp:remove_favorite_album' album.pk %}"
+                                        data-action="remove">Удалить из избранного
+                                </button>
+                            {% else %}
+                                <button class="favorite-button" data-url="{% url 'webapp:add_favorite_album' album.pk %}"
+                                        data-action="add">Добавить в избранное
+                                </button>
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
             </li>
-        {% empty %}
+            {% empty %}
             <li>Нет фотографий в альбоме.</li>
         {% endfor %}
     </ul>

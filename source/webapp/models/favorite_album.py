@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 
 class FavoriteAlbum(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь', related_name='favorite_albums')
     album = models.ForeignKey("webapp.Album", on_delete=models.CASCADE, verbose_name='Альбом')
 
     def __str__(self):

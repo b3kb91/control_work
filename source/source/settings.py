@@ -36,12 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'rest_framework',
-    'rest_framework.authtoken',
-
     'webapp',
     'accounts',
-    'api_v1',
 ]
 
 MIDDLEWARE = [
@@ -71,16 +67,6 @@ TEMPLATES = [
         },
     },
 ]
-
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.TokenAuthentication',
-    ),
-
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
-    ),
-}
 
 WSGI_APPLICATION = 'source.wsgi.application'
 
@@ -128,8 +114,8 @@ USE_I18N = True
 
 USE_TZ = True
 
-LOGIN_REDIRECT_URL = "webapp:"  # нужно продолжить
-LOGOUT_REDIRECT_URL = "webapp:"  # нужно продолжить
+LOGIN_REDIRECT_URL = "webapp:main"
+LOGOUT_REDIRECT_URL = "webapp:main"
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 
 MEDIA_URL = '/uploads/'
