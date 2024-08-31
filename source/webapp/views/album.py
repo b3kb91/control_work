@@ -13,8 +13,6 @@ class AlbumListView(ListView):
     paginate_by = 3
 
     def get_queryset(self):
-        if self.request.user.is_authenticated:
-            return Album.objects.filter(is_public=True).order_by('-created_at')
         return Album.objects.filter(is_public=True).order_by('-created_at')
 
 

@@ -41,14 +41,18 @@ class UserProfileView(LoginRequiredMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         user = self.object
-
         current_user = user == self.request.user
 
         context['public_albums'] = Album.objects.filter(author=user, is_public=True)
         context['public_photos'] = Photo.objects.filter(author=user, album__isnull=True, is_public=True)
+
         if current_user:
             context['private_albums'] = Album.objects.filter(author=user, is_public=False)
             context['private_photos'] = Photo.objects.filter(author=user, album__isnull=True, is_public=False)
-            context['favorites'] = Photo.objects.filter(id__in=user.favorite_photos.values('photo'))
-            context['favorite_albums'] = Album.objects.filter(id__in=user.favorite_albums.values('album'))
+
+            favorite_album_ids = user.favorite_albums.values_list('id', flat=True)
+            context['favorites'] = Photo.objects.filter(id__in=user.favorite_photos.values_list('id', flat=True))
+            context['favorite_albums'] = Album.objects.filter(id__in=favorite_album_ids)
+
         return context
+

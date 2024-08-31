@@ -15,15 +15,14 @@
                 {% if user.is_authenticated %}
                     {% if user.is_authenticated %}
                         {% if user.is_authenticated %}
-                            {% if album in user.favorite_albums.all %}
-                                <button class="favorite-button" data-url="{% url 'webapp:remove_favorite_album' album.pk %}"
-                                        data-action="remove">Удалить из избранного
-                                </button>
-                            {% else %}
-                                <button class="favorite-button" data-url="{% url 'webapp:add_favorite_album' album.pk %}"
-                                        data-action="add">Добавить в избранное
-                                </button>
-                            {% endif %}
+                            <button class="favorite-button"
+                                    data-url="{% url 'webapp:toggle_favorite_photo' photo.pk %}">
+                                {% if user in photo.favorite_users.all %}
+                                    Удалить из избранного
+                                {% else %}
+                                    Добавить в избранное
+                                {% endif %}
+                            </button>
                         {% endif %}
                     {% endif %}
                 {% endif %}

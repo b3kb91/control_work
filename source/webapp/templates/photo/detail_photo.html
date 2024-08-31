@@ -1,54 +1,69 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>{{ photo.caption }}</h1>
-<img src="{{ photo.photo.url }}" width="100" alt="Photo Image"/>
-<p>Автор:
-    {% if user.is_authenticated %}
-        <a href="{% url 'accounts:profile' photo.author.pk %}">
-            Имя: {{ photo.author.first_name }} - Фамилия: {{ photo.author.last_name }}
-        </a>
-    {% else %}
-        Имя: {{ photo.author.first_name }} - Фамилия: {{ photo.author.last_name }}
-    {% endif %}
-</p>
-<p>Дата: {{ photo.created_at }}</p>
-
-{% if user.is_authenticated %}
-    {% if photo in user.favorite_photos.all %}
-        <button class="favorite-button" data-id="{{ photo.pk }}" data-url="{% url 'webapp:remove_favorite_photo' photo.pk %}" data-action="remove">Удалить из избранного</button>
-    {% else %}
-        <button class="favorite-button" data-id="{{ photo.pk }}" data-url="{% url 'webapp:add_favorite_photo' photo.pk %}" data-action="add">Добавить в избранное</button>
-    {% endif %}
-{% endif %}
-
-{% if photo.album %}
-    <p>Альбом:
+    <h1>{{ photo.signature }}</h1>
+    <img src="{{ photo.photo.url }}" width="100" alt="Photo Image"/>
+    <p>Автор:
         {% if user.is_authenticated %}
-            <a href="{% url 'webapp:detail_album' photo.album.pk %}">
-                {{ photo.album.title }}
+            <a href="{% url 'accounts:profile' photo.author.pk %}">
+                Имя: {{ photo.author.first_name }} - Фамилия: {{ photo.author.last_name }}
             </a>
         {% else %}
-            {{ photo.album.title }}
+            Имя: {{ photo.author.first_name }} - Фамилия: {{ photo.author.last_name }}
         {% endif %}
     </p>
-{% endif %}
+    <p>Дата: {{ photo.created_at }}</p>
 
-{% if photo.is_public %}
-    <h2>Избранное у пользователей:</h2>
-    <ul>
-        {% for favorite in photo.favorites.all %}
-            <li>
-                <a href="{% url 'accounts:profile' favorite.user.pk %}">
-                    {{ favorite.user.username }}
+    {% if user.is_authenticated %}
+        <button class="favorite-button" data-url="{% url 'webapp:toggle_favorite_photo' photo.pk %}">
+            {% if user in photo.favorite_users.all %}
+                Удалить из избранного
+            {% else %}
+                Добавить в избранное
+            {% endif %}
+        </button>
+    {% endif %}
+
+    {% if photo.album %}
+        <p>Альбом:
+            {% if user.is_authenticated %}
+                <a href="{% url 'webapp:detail_album' photo.album.pk %}">
+                    {{ photo.album.title }}
                 </a>
-            </li>
+            {% else %}
+                {{ photo.album.title }}
+            {% endif %}
+        </p>
+    {% endif %}
+
+    {% if photo.is_public %}
+        <h2>Избранное у пользователей:</h2>
+        <ul>
+            {% for favorite in photo.favorites.all %}
+                <li>
+                    <a href="{% url 'accounts:profile' favorite.user.pk %}">
+                        {{ favorite.user.username }}
+                    </a>
+                </li>
             {% empty %}
             <li>Нет пользователей в избранном.</li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>Эта фотография не является публичной.</p>
-{% endif %}
-{% endif %}
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Эта фотография не является публичной.</p>
+    {% endif %}
+
+    {% if user.is_authenticated and photo.author == user %}
+        {% if photo.token %}
+            <p>Ссылка для доступа: <a href="{% url 'webapp:photo_by_token' photo.token %}">
+                {{ request.build_absolute_uri|slice:':-1' }}{{ photo.token }}</a>
+            </p>
+        {% else %}
+            <form method="post" action="{% url 'webapp:generate_token' photo.pk %}">
+                {% csrf_token %}
+                <button type="submit">Сгенерировать ссылку доступа</button>
+            </form>
+        {% endif %}
+    {% endif %}
+
 {% endblock %}

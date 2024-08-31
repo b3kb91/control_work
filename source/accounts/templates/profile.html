@@ -14,7 +14,7 @@
 <h2>Публичные фотографии:</h2>
 <ul>
     {% for photo in public_photos %}
-        <li><a href="{% url 'webapp:detail_photo' photo.pk %}">{{ photo.s }}</a></li>
+        <li><a href="{% url 'webapp:detail_photo' photo.pk %}">{{ photo.signature }}</a></li>
     {% endfor %}
 </ul>
 

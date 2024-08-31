@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
@@ -9,6 +10,8 @@ class Album(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Автор альбома')
     is_public = models.BooleanField(default=False, verbose_name='Публичный')
+    favorite_users = models.ManyToManyField(get_user_model(), related_name='favorite_albums', blank=True,
+                                            verbose_name='Избранное')
 
     def __str__(self):
         return f'{self.title} - {self.author}'

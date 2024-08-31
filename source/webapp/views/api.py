@@ -1,54 +1,35 @@
+from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
 from django.views import View
-from django.contrib.auth.mixins import LoginRequiredMixin
-from webapp.models import Photo, Album, FavoritePhoto, FavoriteAlbum
+from django.contrib.auth import get_user_model
+from webapp.models import Album, Photo
 
 
-class AddFavoritePhotoView(LoginRequiredMixin, View):
-    def post(self, request, pk):
-        try:
-            photo = Photo.objects.get(pk=pk)
-            if not FavoritePhoto.objects.filter(user=request.user, photo=photo).exists():
-                FavoritePhoto.objects.create(user=request.user, photo=photo)
-                return JsonResponse({'success': True, 'action': 'added'})
-            return JsonResponse({'success': False, 'error': 'Photo already in favorites'}, status=400)
-        except Photo.DoesNotExist:
-            return JsonResponse({'success': False, 'error': 'Photo not found'}, status=404)
+class ToggleFavoriteAlbumView(View):
+    def post(self, request, *args, **kwargs):
+        album = get_object_or_404(Album, pk=self.kwargs['pk'])
+        if request.user in album.favorite_users.all():
+            album.favorite_users.remove(request.user)
+            is_favorite = False
+        else:
+            album.favorite_users.add(request.user)
+            is_favorite = True
+
+        if request.is_ajax():
+            return JsonResponse({'success': True, 'is_favorite': is_favorite})
+        return JsonResponse({'success': True, 'is_favorite': is_favorite})
 
 
-class RemoveFavoritePhotoView(LoginRequiredMixin, View):
-    def delete(self, request, pk):
-        try:
-            photo = Photo.objects.get(pk=pk)
-            favorite = FavoritePhoto.objects.filter(user=request.user, photo=photo).first()
-            if favorite:
-                favorite.delete()
-                return JsonResponse({'success': True, 'action': 'removed'})
-            return JsonResponse({'success': False, 'error': 'Photo not in favorites'}, status=400)
-        except Photo.DoesNotExist:
-            return JsonResponse({'success': False, 'error': 'Photo not found'}, status=404)
+class ToggleFavoritePhotoView(View):
+    def post(self, request, *args, **kwargs):
+        photo = get_object_or_404(Photo, pk=self.kwargs['pk'])
+        if request.user in photo.favorite_users.all():
+            photo.favorite_users.remove(request.user)
+            is_favorite = False
+        else:
+            photo.favorite_users.add(request.user)
+            is_favorite = True
 
-
-class AddFavoriteAlbumView(LoginRequiredMixin, View):
-    def post(self, request, pk):
-        try:
-            album = Album.objects.get(pk=pk)
-            if not FavoriteAlbum.objects.filter(user=request.user, album=album).exists():
-                FavoriteAlbum.objects.create(user=request.user, album=album)
-                return JsonResponse({'success': True, 'action': 'added'})
-            return JsonResponse({'success': False, 'error': 'Album already in favorites'}, status=400)
-        except Album.DoesNotExist:
-            return JsonResponse({'success': False, 'error': 'Album not found'}, status=404)
-
-
-class RemoveFavoriteAlbumView(LoginRequiredMixin, View):
-    def delete(self, request, pk):
-        try:
-            album = Album.objects.get(pk=pk)
-            favorite = FavoriteAlbum.objects.filter(user=request.user, album=album).first()
-            if favorite:
-                favorite.delete()
-                return JsonResponse({'success': True, 'action': 'removed'})
-            return JsonResponse({'success': False, 'error': 'Album not in favorites'}, status=400)
-        except Album.DoesNotExist:
-            return JsonResponse({'success': False, 'error': 'Album not found'}, status=404)
+        if request.is_ajax():
+            return JsonResponse({'success': True, 'is_favorite': is_favorite})
+        return JsonResponse({'success': True, 'is_favorite': is_favorite})
