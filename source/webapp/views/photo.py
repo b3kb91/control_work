@@ -22,7 +22,7 @@ class PhotoListView(ListView):
         return Photo.objects.filter(is_public=True).order_by('-created_at')
 
 
-class PhotoDetailView(DetailView):
+class PhotoDetailView(DetailView, LoginRequiredMixin):
     template_name = "photo/detail_photo.html"
     model = Photo
 
@@ -70,7 +70,7 @@ class PhotoCreateView(CreateView, LoginRequiredMixin):
         return kwargs
 
 
-class PhotoUpdateView(UpdateView):
+class PhotoUpdateView(UpdateView, LoginRequiredMixin):
     template_name = 'photo/update_photo.html'
     model = Photo
     form_class = PhotoForm
@@ -85,7 +85,7 @@ class PhotoUpdateView(UpdateView):
         return Photo.objects.filter(author=self.request.user)
 
 
-class PhotoDeleteView(DeleteView):
+class PhotoDeleteView(DeleteView, LoginRequiredMixin):
     template_name = 'photo/delete_photo.html'
     model = Photo
     context_object_name = 'photo'

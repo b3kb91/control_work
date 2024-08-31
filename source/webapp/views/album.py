@@ -1,4 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from django.core.exceptions import PermissionDenied
 
@@ -16,7 +17,7 @@ class AlbumListView(ListView):
         return Album.objects.filter(is_public=True).order_by('-created_at')
 
 
-class AlbumDetailView(DetailView):
+class AlbumDetailView(DetailView, LoginRequiredMixin):
     model = Album
     template_name = 'album/album_detail.html'
 
@@ -53,8 +54,9 @@ class AlbumDeleteView(LoginRequiredMixin, DeleteView):
     model = Album
     template_name = 'album/album_delete.html'
     context_object_name = 'album'
+    success_url = reverse_lazy('webapp:main')
 
     def delete(self, request, *args, **kwargs):
         album = self.get_object()
-        album.photo_set.all().delete()
+        album.delete()
         return super().delete(request, *args, **kwargs)

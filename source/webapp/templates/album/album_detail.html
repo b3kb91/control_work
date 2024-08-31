@@ -15,8 +15,11 @@
                 {% if user.is_authenticated %}
                     {% if user.is_authenticated %}
                         {% if user.is_authenticated %}
-                            <button class="favorite-button"
-                                    data-url="{% url 'webapp:toggle_favorite_photo' photo.pk %}">
+                            <button
+                                    class="favorite-button"
+                                    data-js="favorite-button"
+                                    data-url="{% url 'webapp:toggle_favorite_photo' photo.pk %}"
+                                    data-action="{% if user in photo.favorite_users.all %}remove{% else %}add{% endif %}">
                                 {% if user in photo.favorite_users.all %}
                                     Удалить из избранного
                                 {% else %}

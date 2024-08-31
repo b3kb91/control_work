@@ -17,8 +17,8 @@ class Album(models.Model):
         return f'{self.title} - {self.author}'
 
     def get_absolute_url(self):
-        return reverse('webapp:main')
-        # return reverse("webapp:detail_album", kwargs={"pk": self.pk})
+        # return reverse('webapp:main')
+        return reverse("webapp:detail_album", kwargs={"pk": self.pk})
 
     def get_photos(self):
         return self.photo_set.filter(is_public=True).order_by('-created_at')
