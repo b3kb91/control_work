@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 
 class Album(models.Model):
@@ -11,3 +12,17 @@ class Album(models.Model):
 
     def __str__(self):
         return f'{self.title} - {self.author}'
+
+    def get_absolute_url(self):
+        return reverse('webapp:main')
+        # return reverse("webapp:detail_album", kwargs={"pk": self.pk})
+
+    def get_photos(self):
+        return self.photo_set.filter(is_public=True).order_by('-created_at')
+
+    def save(self, *args, **kwargs):
+        if not self.is_public:
+
+            if self.pk and Album.objects.get(pk=self.pk).is_public:
+                self.photo_set.update(is_public=False)
+        super().save(*args, **kwargs)

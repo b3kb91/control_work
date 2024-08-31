@@ -2,7 +2,7 @@
 {% block content %}
     <form action="" method="post">
         {% csrf_token %}
-        <h3>Вы действительно хотите удалить фотографию: <strong>{{ photo.signature }}</strong> ?</h3>
+        <h3>Вы действительно хотите удалить альбом: <strong>{{ album.title }}</strong> ?</h3>
         <br>
         <button type="submit" class="btn btn-danger">Удалить</button>
         <br>

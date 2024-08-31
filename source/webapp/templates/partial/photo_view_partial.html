@@ -1,0 +1,49 @@
+{% load static %}
+
+{% block content %}
+    <h1 class="my-4">Фотографии</h1>
+    <div class="container">
+        <div class="row">
+            {% for photo in photos %}
+                <div class="class=col-12 col-md-6 col-lg-3 mt-3">
+                    <div class="card mt-3 text-center bg-white rounded-2 h-100 d-flex flex-column align-items-center "
+                         style="width: 18rem;">
+                        <img src="{{ photo.photo.url }}" class="card-img-top" alt="Photo Image">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ photo.signature }}</h5>
+                            <p class="card-text">
+                                {#                                {% if user.is_authenticated %}#}
+                                {#                                    <a href="{% url 'webapp:profile' photo.author.pk %}">#}
+                                {#                                        Имя: {{ photo.author.first_name }} - Фамилия: {{ photo.author.last_name }}#}
+                                {#                                    </a>#}
+                                {#                                {% else %}#}
+                                Имя: {{ photo.author.first_name }} - Фамилия: {{ photo.author.last_name }}
+                                {#                                {% endif %}#}
+                            </p>
+                            <p class="card-text">Дата: {{ photo.created_at }}</p>
+                            <p class="card-text">
+                                {% if photo.album and user.is_authenticated %}
+                                    Альбом:
+                                    <a href="{% url 'webapp:detail_album' photo.album.pk %}">{{ photo.album.title }}</a>
+                                {% elif photo.album %}
+                                    Альбом: {{ photo.album.title }}
+                                {% endif %}
+                                {% if user.is_authenticated %}
+{#                                    {% if user.has_perms.webapp.change_project or user in project.users.all %}#}
+                                        <a href="{% url 'webapp:update_photo' photo.pk %}">
+                                            <i class="fa-2x fa-sharp fa-regular fa-pen-to-square"></i>
+                                        </a>
+{#                                    {% endif %}#}
+{#                                    {% if user.has_perms.webapp.delete_project or user in project.users.all %}#}
+                                        <a href="{% url 'webapp:delete_photo' photo.pk %}"
+                                           class="fa-2x fa-solid fa-trash text-danger"></a>
+{#                                    {% endif %}#}
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

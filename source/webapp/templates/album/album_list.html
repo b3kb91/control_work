@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Список альбомов</h1>
+    <ul>
+        {% for album in albums %}
+            <li>
+                <a href="{% url 'webapp:detail_album' album.pk %}">{{ album.title }}</a>
+                - {{ album.created_at }}
+            </li>
+        {% endfor %}
+    </ul>
+    {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+    {% endif %}
+
+{% endblock %}
