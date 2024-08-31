@@ -1,0 +1,668 @@
+[
+{
+    "model": "auth.permission",
+    "pk": 1,
+    "fields": {
+        "name": "Can add log entry",
+        "content_type": 1,
+        "codename": "add_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 2,
+    "fields": {
+        "name": "Can change log entry",
+        "content_type": 1,
+        "codename": "change_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 3,
+    "fields": {
+        "name": "Can delete log entry",
+        "content_type": 1,
+        "codename": "delete_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 4,
+    "fields": {
+        "name": "Can view log entry",
+        "content_type": 1,
+        "codename": "view_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 5,
+    "fields": {
+        "name": "Can add permission",
+        "content_type": 2,
+        "codename": "add_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 6,
+    "fields": {
+        "name": "Can change permission",
+        "content_type": 2,
+        "codename": "change_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 7,
+    "fields": {
+        "name": "Can delete permission",
+        "content_type": 2,
+        "codename": "delete_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 8,
+    "fields": {
+        "name": "Can view permission",
+        "content_type": 2,
+        "codename": "view_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 9,
+    "fields": {
+        "name": "Can add group",
+        "content_type": 3,
+        "codename": "add_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 10,
+    "fields": {
+        "name": "Can change group",
+        "content_type": 3,
+        "codename": "change_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 11,
+    "fields": {
+        "name": "Can delete group",
+        "content_type": 3,
+        "codename": "delete_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 12,
+    "fields": {
+        "name": "Can view group",
+        "content_type": 3,
+        "codename": "view_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 13,
+    "fields": {
+        "name": "Can add user",
+        "content_type": 4,
+        "codename": "add_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 14,
+    "fields": {
+        "name": "Can change user",
+        "content_type": 4,
+        "codename": "change_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 15,
+    "fields": {
+        "name": "Can delete user",
+        "content_type": 4,
+        "codename": "delete_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 16,
+    "fields": {
+        "name": "Can view user",
+        "content_type": 4,
+        "codename": "view_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 17,
+    "fields": {
+        "name": "Can add content type",
+        "content_type": 5,
+        "codename": "add_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 18,
+    "fields": {
+        "name": "Can change content type",
+        "content_type": 5,
+        "codename": "change_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 19,
+    "fields": {
+        "name": "Can delete content type",
+        "content_type": 5,
+        "codename": "delete_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 20,
+    "fields": {
+        "name": "Can view content type",
+        "content_type": 5,
+        "codename": "view_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 21,
+    "fields": {
+        "name": "Can add session",
+        "content_type": 6,
+        "codename": "add_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 22,
+    "fields": {
+        "name": "Can change session",
+        "content_type": 6,
+        "codename": "change_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 23,
+    "fields": {
+        "name": "Can delete session",
+        "content_type": 6,
+        "codename": "delete_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 24,
+    "fields": {
+        "name": "Can view session",
+        "content_type": 6,
+        "codename": "view_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 25,
+    "fields": {
+        "name": "Can add Token",
+        "content_type": 7,
+        "codename": "add_token"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 26,
+    "fields": {
+        "name": "Can change Token",
+        "content_type": 7,
+        "codename": "change_token"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 27,
+    "fields": {
+        "name": "Can delete Token",
+        "content_type": 7,
+        "codename": "delete_token"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 28,
+    "fields": {
+        "name": "Can view Token",
+        "content_type": 7,
+        "codename": "view_token"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 29,
+    "fields": {
+        "name": "Can add Token",
+        "content_type": 8,
+        "codename": "add_tokenproxy"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 30,
+    "fields": {
+        "name": "Can change Token",
+        "content_type": 8,
+        "codename": "change_tokenproxy"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 31,
+    "fields": {
+        "name": "Can delete Token",
+        "content_type": 8,
+        "codename": "delete_tokenproxy"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 32,
+    "fields": {
+        "name": "Can view Token",
+        "content_type": 8,
+        "codename": "view_tokenproxy"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 33,
+    "fields": {
+        "name": "Can add album",
+        "content_type": 9,
+        "codename": "add_album"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 34,
+    "fields": {
+        "name": "Can change album",
+        "content_type": 9,
+        "codename": "change_album"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 35,
+    "fields": {
+        "name": "Can delete album",
+        "content_type": 9,
+        "codename": "delete_album"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 36,
+    "fields": {
+        "name": "Can view album",
+        "content_type": 9,
+        "codename": "view_album"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 37,
+    "fields": {
+        "name": "Can add favorite album",
+        "content_type": 10,
+        "codename": "add_favoritealbum"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 38,
+    "fields": {
+        "name": "Can change favorite album",
+        "content_type": 10,
+        "codename": "change_favoritealbum"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 39,
+    "fields": {
+        "name": "Can delete favorite album",
+        "content_type": 10,
+        "codename": "delete_favoritealbum"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 40,
+    "fields": {
+        "name": "Can view favorite album",
+        "content_type": 10,
+        "codename": "view_favoritealbum"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 41,
+    "fields": {
+        "name": "Can add photo",
+        "content_type": 11,
+        "codename": "add_photo"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 42,
+    "fields": {
+        "name": "Can change photo",
+        "content_type": 11,
+        "codename": "change_photo"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 43,
+    "fields": {
+        "name": "Can delete photo",
+        "content_type": 11,
+        "codename": "delete_photo"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 44,
+    "fields": {
+        "name": "Can view photo",
+        "content_type": 11,
+        "codename": "view_photo"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 45,
+    "fields": {
+        "name": "Can add favorite photo",
+        "content_type": 12,
+        "codename": "add_favoritephoto"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 46,
+    "fields": {
+        "name": "Can change favorite photo",
+        "content_type": 12,
+        "codename": "change_favoritephoto"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 47,
+    "fields": {
+        "name": "Can delete favorite photo",
+        "content_type": 12,
+        "codename": "delete_favoritephoto"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 48,
+    "fields": {
+        "name": "Can view favorite photo",
+        "content_type": 12,
+        "codename": "view_favoritephoto"
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 7,
+    "fields": {
+        "password": "pbkdf2_sha256$720000$ak0lIP8Dl0u88MwOZvLFJJ$5gPQSeAzu2TOFkafG5ZJKIXRCR1zLQ2IDyXFDTDnO2o=",
+        "last_login": "2024-08-31T11:24:41.283Z",
+        "is_superuser": false,
+        "username": "bekbol",
+        "first_name": "bekbol",
+        "last_name": "musaev",
+        "email": "11@mail.ru",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-08-31T11:13:40.901Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 1,
+    "fields": {
+        "app_label": "admin",
+        "model": "logentry"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 2,
+    "fields": {
+        "app_label": "auth",
+        "model": "permission"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 3,
+    "fields": {
+        "app_label": "auth",
+        "model": "group"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 4,
+    "fields": {
+        "app_label": "auth",
+        "model": "user"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 5,
+    "fields": {
+        "app_label": "contenttypes",
+        "model": "contenttype"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 6,
+    "fields": {
+        "app_label": "sessions",
+        "model": "session"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 7,
+    "fields": {
+        "app_label": "authtoken",
+        "model": "token"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 8,
+    "fields": {
+        "app_label": "authtoken",
+        "model": "tokenproxy"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 9,
+    "fields": {
+        "app_label": "webapp",
+        "model": "album"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 10,
+    "fields": {
+        "app_label": "webapp",
+        "model": "favoritealbum"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 11,
+    "fields": {
+        "app_label": "webapp",
+        "model": "photo"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 12,
+    "fields": {
+        "app_label": "webapp",
+        "model": "favoritephoto"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "4k27oet677pdeia6dbk55rtrmbc45mtf",
+    "fields": {
+        "session_data": "e30:1skL71:Tp1O3CWjUPu810DUuwxN7GIsGzSIScVPxZ3b0Z1qDog",
+        "expire_date": "2024-09-14T10:13:43.144Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "p9rent1gd2ahnlx4abkwmuxiwrwbtolt",
+    "fields": {
+        "session_data": "e30:1skL7I:TPzZTvtMZNhCewOAYTQjIHwVW8i8RNjcQfuEUoJaYNo",
+        "expire_date": "2024-09-14T10:14:00.673Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "rlrmlff4mbo4ha9fthwk6a3sfbzlcmf9",
+    "fields": {
+        "session_data": ".eJxVjEsKAjEQBe-StQQ65tPj0r1nCEl3a0YlgcnMSry7Bmah8FavinqpmLa1xK3LEmdWJxXU4ffLiR5SB-B7qremqdV1mbMeit5p15fG8jzv7l-gpF5G1jgKlEg8ogUBpiDsnWUJGY8WggP0YQLxV6SJvsveZmsEMBlCVu8P7Wk4Jw:1skMDh:DCgUjSP9O4GUcT8hMd6hRUAEsWYxzQfLMnGjY_C4470",
+        "expire_date": "2024-09-14T11:24:41.286Z"
+    }
+},
+{
+    "model": "webapp.photo",
+    "pk": 14,
+    "fields": {
+        "photo": "photos/101-colored-roses-1_1_cd7zjRB.jpg",
+        "signature": "hello",
+        "created_at": "2024-08-31T12:10:04.349Z",
+        "author": 7,
+        "album": null,
+        "is_public": true,
+        "token": "7e0cdca9-e768-49d3-917a-569aa456f148",
+        "favorite_users": [
+            7
+        ]
+    }
+},
+{
+    "model": "webapp.photo",
+    "pk": 15,
+    "fields": {
+        "photo": "photos/101-colored-roses-1_1_43HFasX.jpg",
+        "signature": "beka",
+        "created_at": "2024-08-31T12:13:03.991Z",
+        "author": 7,
+        "album": null,
+        "is_public": true,
+        "token": "123dc729-7176-449d-8004-3ebedc56f700",
+        "favorite_users": []
+    }
+},
+{
+    "model": "webapp.photo",
+    "pk": 16,
+    "fields": {
+        "photo": "photos/101-colored-roses-1_1_hjXYnTI.jpg",
+        "signature": "р111",
+        "created_at": "2024-08-31T12:39:26.055Z",
+        "author": 7,
+        "album": null,
+        "is_public": true,
+        "token": "6a9b10c3-2794-406e-a20a-f632e697c827",
+        "favorite_users": []
+    }
+},
+{
+    "model": "webapp.photo",
+    "pk": 18,
+    "fields": {
+        "photo": "photos/moto_Xq15W74.jpg",
+        "signature": "beka1",
+        "created_at": "2024-08-31T13:33:24.275Z",
+        "author": 7,
+        "album": 5,
+        "is_public": true,
+        "token": "fe520902-0c1a-4301-9998-644ea975c805",
+        "favorite_users": []
+    }
+},
+{
+    "model": "webapp.photo",
+    "pk": 19,
+    "fields": {
+        "photo": "photos/moto_vcxMm8p.jpg",
+        "signature": "beka2",
+        "created_at": "2024-08-31T13:35:52.586Z",
+        "author": 7,
+        "album": 5,
+        "is_public": true,
+        "token": "f177ecbd-8da9-4af3-8651-85c458f2ac2b",
+        "favorite_users": []
+    }
+},
+{
+    "model": "webapp.album",
+    "pk": 5,
+    "fields": {
+        "title": "beka",
+        "description": "beka1",
+        "created_at": "2024-08-31T13:33:10.978Z",
+        "author": 7,
+        "is_public": true,
+        "favorite_users": []
+    }
+},
+{
+    "model": "webapp.album",
+    "pk": 6,
+    "fields": {
+        "title": "beka3",
+        "description": "beka3",
+        "created_at": "2024-08-31T13:36:48.084Z",
+        "author": 7,
+        "is_public": true,
+        "favorite_users": []
+    }
+}
+]
