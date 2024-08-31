@@ -4,13 +4,16 @@
 {% block content %}
     <br>
     <div class="row">
-        {% for photo in photos %}
-            {% include "partial/photo_view_partial.html" %}
-            {% empty %}
-            <h2>Нет фоток</h2>
-        {% endfor %}
+        {% include "partial/photo_view_partial.html" %}
+
     </div>
-    {% if is_paginated %}
-        {% include 'partial/pagination.html' %}
-    {% endif %}
+{% endblock %}
+
+{% block paginator %}
+
+    <div class="paginator mt-4">
+        {% if is_paginated %}
+            {% include "partial/pagination.html" %}
+        {% endif %}
+    </div>
 {% endblock %}

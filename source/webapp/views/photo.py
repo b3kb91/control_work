@@ -11,7 +11,7 @@ class PhotoListView(ListView):
     template_name = 'photo/photo_list.html'
     ordering = ['-created_at']
     context_object_name = 'photos'
-    paginate_by = 3
+    paginate_by = 1
 
     def get_queryset(self):
         if self.request.user.is_authenticated:

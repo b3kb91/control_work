@@ -5,9 +5,6 @@ from webapp.models import Photo, Album
 
 
 class PhotoForm(forms.ModelForm):
-
-
-
     class Meta:
         model = Photo
         fields = ['photo', 'signature', 'album', 'is_public']
@@ -17,6 +14,7 @@ class PhotoForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         if self.user and self.user.is_authenticated:
             self.fields['album'].queryset = Album.objects.filter(author=self.user)
+
         else:
             self.fields['album'].queryset = Album.objects.none()
 

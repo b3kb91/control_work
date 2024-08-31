@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ profile_user.get_full_name }}</h1>
+<p>Имя: {{ profile_user.first_name }} - Фамилия: {{ profile_user.last_name }}</p>
+
+<h2>Публичные альбомы:</h2>
+<ul>
+    {% for album in public_albums %}
+        <li><a href="{% url 'webapp:detail_album' album.pk %}">{{ album.title }}</a></li>
+    {% endfor %}
+</ul>
+
+<h2>Публичные фотографии:</h2>
+<ul>
+    {% for photo in public_photos %}
+        <li><a href="{% url 'webapp:detail_photo' photo.pk %}">{{ photo.s }}</a></li>
+    {% endfor %}
+</ul>
+
+{% if profile_user == user %}
+    <h2>Приватные альбомы:</h2>
+    <ul>
+        {% for album in private_albums %}
+            <li><a href="{% url 'webapp:detail_album' album.pk %}">{{ album.title }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <h2>Приватные фотографии:</h2>
+    <ul>
+        {% for photo in private_photos %}
+            <li><a href="{% url 'webapp:detail_photo' photo.pk %}">{{ photo.signature }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <h2>Избранное:</h2>
+    <h3>Альбомы:</h3>
+    <ul>
+        {% for album in favorite_albums %}
+            <li><a href="{% url 'webapp:detail_album' album.pk %}">{{ album.title }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <h3>Фотографии:</h3>
+    <ul>
+        {% for photo in favorites %}
+            <li><a href="{% url 'webapp:detail_photo' photo.pk %}">{{ photo.signature }}</a></li>
+        {% endfor %}
+    </ul>
+{% endif %}
+{% endblock %}
