@@ -11,7 +11,7 @@ class Photo(models.Model):
     signature = models.CharField(verbose_name='Подпись', max_length=100, null=False, blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Автор')
-    album = models.ForeignKey('webapp.Album', on_delete=models.SET_NULL, null=True, blank=True, verbose_name='Альбом')
+    album = models.ForeignKey('webapp.Album', on_delete=models.CASCADE, null=True, blank=True, verbose_name='Альбом')
     is_public = models.BooleanField(default=False, verbose_name='Публичная')
     favorite_users = models.ManyToManyField(get_user_model(), related_name='favorite_photos', blank=True,
                                             verbose_name='Избранное')
